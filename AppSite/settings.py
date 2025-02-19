@@ -32,7 +32,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY','django-insecure-GENERATED_NEW_KEY_HE
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DJANGO_DEBUG') == 'True'
 
-ALLOWED_HOSTS = ['https://appsite-backend.onrender.com','localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['appsite-backend.onrender.com','localhost', '127.0.0.1']
 
 
 # Application definition
@@ -82,7 +82,7 @@ ROOT_URLCONF = 'AppSite.urls'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://appsite-frontend.vercel.app/"
+    "https://appsite-frontend.vercel.app"
 ]
 
 # CSRF_TRUSTED_ORIGINS = [
@@ -192,6 +192,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
