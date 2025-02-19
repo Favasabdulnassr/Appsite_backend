@@ -85,12 +85,23 @@ CORS_ALLOWED_ORIGINS = [
     "https://appsite-frontend.vercel.app"
 ]
 
-# CSRF_TRUSTED_ORIGINS = [
-#     'http://localhost:5173'
-    
-#     ]
 
-# CORS_ALLOW_ALL_ORIGINS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://appsite-frontend.vercel.app'
+]
+
+
+
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
 
 
 TEMPLATES = [
