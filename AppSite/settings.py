@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 # import dj_database_url
+from django.core.management.utils import get_random_secret_key
+
 from pathlib import Path
 from datetime import timedelta
 from dotenv import load_dotenv
@@ -25,12 +27,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY','django-insecure-GENERATED_NEW_KEY_HERE')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DJANGO_DEBUG') == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -79,7 +81,8 @@ ROOT_URLCONF = 'AppSite.urls'
 
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173"
+    "http://localhost:5173",
+    "https://appsite-frontend.vercel.app/"
 ]
 
 # CSRF_TRUSTED_ORIGINS = [
