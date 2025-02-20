@@ -77,8 +77,8 @@ CLOUDINARY_STORAGE = {
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
-# MEDIA_URL = '/medias/'
-# MEDIA_ROOT = BASE_DIR / 'media' 
+MEDIA_URL = '/medias/'
+MEDIA_ROOT = BASE_DIR / 'media' 
 
 # # Add this after your MEDIA_ROOT definition
 # os.makedirs(MEDIA_ROOT / 'android_apps', exist_ok=True)

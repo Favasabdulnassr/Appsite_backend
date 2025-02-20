@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator
+from cloudinary.models import CloudinaryField
 
 
 User = get_user_model()
@@ -8,7 +9,7 @@ User = get_user_model()
 
 class AndroidApp(models.Model):
     name = models.CharField(max_length=255)
-    image = models.ImageField(upload_to='android_apps/', blank=True, null=True)
+    image = image = CloudinaryField('image', folder='android_apps')
     app_link  = models.URLField()
     category = models.CharField(max_length=100)
     sub_category = models.CharField(max_length=100)
@@ -23,7 +24,7 @@ class AndroidApp(models.Model):
 class CompletedTask(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     app = models.ForeignKey(AndroidApp,on_delete=models.CASCADE)
-    screenshot = models.ImageField(upload_to='screeshots/')
+    screenshot =  CloudinaryField('screenshot', folder='screenshots') 
     is_verified = models.BooleanField(default=False)
     completed_at = models.DateTimeField(auto_now_add=True)
 
