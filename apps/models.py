@@ -2,14 +2,14 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.core.validators import MinValueValidator
 from cloudinary.models import CloudinaryField
-
+import os
 
 User = get_user_model()
 
 
 class AndroidApp(models.Model):
     name = models.CharField(max_length=255)
-    image = image = CloudinaryField('image', folder='android_apps')
+    image = CloudinaryField('image', folder='android_apps')
     app_link  = models.URLField()
     category = models.CharField(max_length=100)
     sub_category = models.CharField(max_length=100)
@@ -19,6 +19,11 @@ class AndroidApp(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_image_url(self):
+        if self.image:
+            return f"https://res.cloudinary.com/{os.getenv('CLOUD_NAME')}/{self.image}"
+        return None
     
 
 class CompletedTask(models.Model):
@@ -30,4 +35,9 @@ class CompletedTask(models.Model):
 
     class Meta:
         unique_together = ('user','app')
+
+    def get_screenshot_url(self):
+        if self.screenshot:
+            return f"https://res.cloudinary.com/{os.getenv('CLOUD_NAME')}/{self.screenshot}"
+        return None    
         
