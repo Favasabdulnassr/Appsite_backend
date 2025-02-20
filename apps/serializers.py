@@ -39,5 +39,5 @@ class CompletedTaskSerilizer(serializers.ModelSerializer):
 
     class Meta:
         model = CompletedTask
-        fields = ['id', 'app', 'app_name', 'app_points', 'screenshot',' screenshot_url', 'is_verified', 'completed_at','user_name','user_email']
+        fields = ['id', 'app', 'app_name', 'app_points', 'screenshot','screenshot_url', 'is_verified', 'completed_at','user_name','user_email']
         read_only_fields = ['is_verified']
