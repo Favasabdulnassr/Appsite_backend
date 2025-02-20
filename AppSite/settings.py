@@ -47,7 +47,9 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'users',
-    'apps'
+    'apps',
+    'cloudinary',
+    'cloudinary_storage',
 
     # 'rest_framework.authtoken',
 
@@ -66,11 +68,20 @@ MIDDLEWARE = [
 ]
 
 
-MEDIA_URL = '/medias/'
-MEDIA_ROOT = BASE_DIR / 'media' 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv('CLOUD_NAME'),
+    'API_KEY': os.getenv('API_KEY'),
+    'API_SECRET': os.getenv('API_SECRET')
+}
 
-# Add this after your MEDIA_ROOT definition
-os.makedirs(MEDIA_ROOT / 'android_apps', exist_ok=True)
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
+# MEDIA_URL = '/medias/'
+# MEDIA_ROOT = BASE_DIR / 'media' 
+
+# # Add this after your MEDIA_ROOT definition
+# os.makedirs(MEDIA_ROOT / 'android_apps', exist_ok=True)
 
 
 
